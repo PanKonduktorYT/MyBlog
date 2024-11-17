@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Kryptowaluty</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js' defer></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>    
+    <div class="menu">
+        <a href="index.html"><img src="logo-png.png" alt="Logo PKMC Technology" height="75" width="88"></a>
+        <div class="button"><span>Matematyka</span>
+            <div class="button_list">
+                <a href="#">Algebra</a><br>
+                <a href="#">Calculus</a><br>
+                <a href="#">Geometria</a>
+            </div>
+        </div>
+        <div class="button"><span>Fizyka</span>
+            <div class="button_list">
+                <a href="#">Mechanika</a><br>
+                <a href="#">Optyka</a><br>
+                <a href="#">Termodynamika</a>
+            </div>
+        </div>
+        <div class="button"><span>Informatyka</span>
+            <div class="button_list">
+                <a href="#">Programowanie</a><br>
+                <a href="#">Sieci Komputerowe</a><br>
+                <a href="#">Cyberbezpieczeństwo</a>
+            </div>
+        </div>
+        <div class="button"><span>Finanse</span>
+            <div class="button_list">
+                <a href="accounting.html">Bankowość</a><br>
+                <a href="#">Inwestowanie</a><br>
+                <a href="cryptocurrency.html">Kryptowaluty</a>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Kryptowaluta</th>
+                <th>Cena</th>
+                <th>Logo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bitcoin</td>
+                <td><p class="price" id="btc-price">Ładowanie Bitcoina...</p></td>
+                <td><img src="Bitcoin.png" alt="Bitcoin Logo" height="50" width="50"></td>
+            </tr>
+            <tr>
+                <td>Ethereum</td>
+                <td><p class="price" id="eth-price">Ładowanie Ethereum...</p></td>
+                <td><img src="etherumlogo.png" alt="Ethereum Logo" height="50" width="50"></td>
+            </tr>
+            <tr>
+                <td>Solana</td>
+                <td><p class="price" id="sol-price">Ładowanie Solany...</p></td>
+                <td><img src="solana.jpg" alt="Solana Logo" height="72" width="96"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        async function fetchBitcoinPrice() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+                if (!response.ok) throw new Error('Błąd podczas pobierania danych');
+                
+                const data = await response.json();
+                const price = data.bitcoin.usd;
+
+                document.getElementById('btc-price').textContent = `$${price.toLocaleString()}`;
+                document.getElementById('eth-price').textContent = `Ethereum: $${data.ethereum.usd.toLocaleString()}`;
+                document.getElementById('sol-price').textContent = `Solana: $${data.solana.usd.toLocaleString()}`;
+            } catch (error) {
+                console.error('Wystąpił błąd:', error);
+                document.getElementById('btc-price').textContent = 'Nie udało się pobrać ceny';
+                document.getElementById('eth-price').textContent = 'Nie udało się pobrać ceny';
+                document.getElementById('sol-price').textContent = 'Nie udało się pobrać ceny';
+            }
+        }
+
+        // Pobieranie ceny co 10 sekund
+        fetchBitcoinPrice();
+        setInterval(fetchBitcoinPrice, 60000);
+    </script>
+</body>
+</html>
