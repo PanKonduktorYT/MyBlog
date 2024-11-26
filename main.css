@@ -157,3 +157,17 @@ table {
     border-radius: 8px;
     overflow: hidden;
 }
+
+.menu2137{
+    border-radius: 1px;
+    border: 10px;
+    color: #4CAF50;
+    border-color: white;
+    background-color: white;
+    width:min-content;
+}
+
+h1{
+    color:white;
+    align-items: center;
+}
