@@ -10,8 +10,24 @@
 </head>
 <body>
     <h1>FAQ - Strona WWW</h1>
-    <p>Fajna strona BTW</p><br>
+    <p>BTW Fajna strona o Krakowie</p><br>
     <p>Chess is game only for pros</p>
+    <h2 style="color:white">Czas w Krakowie</h2>
+    <div id="zegar">00:00:00:000</div>
+
+    <script>
+        function aktualizujZegar() {
+            const teraz = new Date();
+            const godzina = teraz.getHours().toString().padStart(2, '0'); 
+            const minuta = teraz.getMinutes().toString().padStart(2, '0'); 
+            const sekunda = teraz.getSeconds().toString().padStart(2, '0');
+            const milisekunda = teraz.getMilliseconds().toString().padStart(2, '0');
+            
+            document.getElementById('zegar').textContent = `${godzina}:${minuta}:${sekunda}:${milisekunda}`;
+        }
+        setInterval(aktualizujZegar, 1);
+        aktualizujZegar();
+    </script>
     <ul class="menu2137">
         <li>Jabłko</li>
         <li>Gruszka</li>
@@ -29,6 +45,9 @@
         </iframe>
     </div>
     <a href="index.html">Powrót do strony głównej</a>
+
+    
+    
     <p style="color:whitesmoke">Copyright &copy; Piotr Kruszec kl. 3A</p>
 </body>
 </html>

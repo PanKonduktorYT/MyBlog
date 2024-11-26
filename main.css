@@ -102,7 +102,7 @@ img{
 }
 
 .rect:hover{
-    
+    color:blue;
 }
 
 p{
@@ -164,10 +164,28 @@ table {
     color: #4CAF50;
     border-color: white;
     background-color: white;
-    width:min-content;
+    width: min-content;
 }
 
 h1{
     color:white;
     align-items: center;
+}
+
+.menu69{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+    height: 75%;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    margin: 10%;
+}
+
+#zegar {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
 }
